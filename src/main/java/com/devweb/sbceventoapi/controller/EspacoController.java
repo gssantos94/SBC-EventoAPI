@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.devweb.sbceventoapi.model.Espaco;
+import com.devweb.sbceventoapi.model.Evento;
 import com.devweb.sbceventoapi.repository.EspacoRepository;
 
 @RestController
@@ -33,14 +34,11 @@ public class EspacoController {
     }
 
     // Endpoint para buscar um espaço pelo ID
-    @GetMapping("/{id}")
-    public ResponseEntity<Espaco> getEspacoById(@PathVariable Long id) {
-        Optional<Espaco> espaco = espacoRepository.findById(id);
-        if (espaco.isPresent()) {
-            return ResponseEntity.ok(espaco.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    @GetMapping("/{id:\\d+}")
+    public ResponseEntity<Espaco> buscarPorId(@PathVariable Long id) {
+        return espacoRepository.findById(id)
+                .map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
     }
 
     // Endpoint para criar um novo espaço

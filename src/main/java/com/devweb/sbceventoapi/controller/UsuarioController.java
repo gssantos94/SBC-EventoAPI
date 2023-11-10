@@ -29,7 +29,7 @@ public class UsuarioController {
         return usuarioRepository.findAll();
     }
 
-       @GetMapping("/{id:\\d+}")
+    @GetMapping("/{id:\\d+}")
     public ResponseEntity<Usuario> buscarPorId(@PathVariable Long id) {
         return usuarioRepository.findById(id)
                 .map(record -> ResponseEntity.ok().body(record))
@@ -42,20 +42,19 @@ public class UsuarioController {
         return usuarioRepository.save(usuario);
     }
     
-    @PutMapping("/{id}")
-    public Usuario updateUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
-        Optional<Usuario> optionalUsuario = usuarioRepository.findById(id);
-        if (optionalUsuario.isPresent()) {
-            Usuario existingUsuario = optionalUsuario.get();
-            existingUsuario.setLogin(usuario.getLogin());
-            existingUsuario.setEmail(usuario.getEmail());
-            existingUsuario.setNome(usuario.getNome());
-            existingUsuario.setAfiliacao(usuario.getAfiliacao());
-            existingUsuario.setadmin(usuario.isadmin());
-            return usuarioRepository.save(existingUsuario);
-        } else {
-            throw new RuntimeException("Usuário não encontrado com id: " + id);
-        }
+    // Atualizar um usuário
+    @PutMapping(value="/{id}")
+    public ResponseEntity<Usuario> updateUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
+        return usuarioRepository.findById(id)
+                .map(record -> {
+                    record.setLogin(usuario.getLogin());
+                    record.setEmail(usuario.getEmail());
+                    record.setNome(usuario.getNome());
+                    record.setAfiliacao(usuario.getAfiliacao());
+                    record.setadmin(usuario.isadmin());
+                    Usuario updated = usuarioRepository.save(record);
+                    return ResponseEntity.ok().body(updated);
+                }).orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")

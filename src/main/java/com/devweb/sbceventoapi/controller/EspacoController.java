@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.devweb.sbceventoapi.model.Espaco;
-import com.devweb.sbceventoapi.model.Evento;
 import com.devweb.sbceventoapi.repository.EspacoRepository;
 
 @RestController

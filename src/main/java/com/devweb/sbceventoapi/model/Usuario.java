@@ -29,14 +29,13 @@ public class Usuario {
     @NotBlank
     private String afiliacao;
 
-    
     private boolean admin = false;
 
-    // Construtor padrão
+    // Construtores
+
     public Usuario() {
     }
 
-    // Construtor com parâmetros
     public Usuario(String login, String email, String nome, String afiliacao, boolean admin) {
         this.login = login;
         this.email = email;
@@ -46,6 +45,7 @@ public class Usuario {
     }
 
     // Getters e setters
+
     public Long getId() {
         return id;
     }
@@ -86,11 +86,11 @@ public class Usuario {
         this.afiliacao = afiliacao;
     }
 
-    public boolean isadmin() {
+    public boolean isAdmin() {
         return admin;
     }
 
-    public void setadmin(boolean admin) {
+    public void setAdmin(boolean admin) {
         this.admin = admin;
     }
 

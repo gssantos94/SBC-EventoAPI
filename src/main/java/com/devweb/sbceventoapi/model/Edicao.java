@@ -1,6 +1,6 @@
 package com.devweb.sbceventoapi.model;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -24,13 +25,13 @@ public class Edicao {
     private int numero;
 
     @NotNull
-    private int ano;
+    private String ano;
 
     @NotNull
-    private Date data_inicio;
+    private LocalDate data_inicio;
 
     @NotNull
-    private Date data_fim;
+    private LocalDate data_fim;
 
     @NotBlank
     private String cidade;
@@ -39,12 +40,23 @@ public class Edicao {
     @JoinColumn(name = "evento_id")
     private Evento evento;
 
+    @OneToOne
+    private Usuario organizador;
+
+    public Usuario getOrganizador() {
+        return organizador;
+    }
+
+    public void setOrganizador(Usuario organizador) {
+        this.organizador = organizador;
+    }
+    
     // Construtor padrão
     public Edicao() {
     }
 
     // Construtor com parâmetros
-    public Edicao( int numero, int ano, Date data_inicio, Date data_fim, String cidade, Evento evento) {
+    public Edicao(int numero, String ano, LocalDate data_inicio, LocalDate data_fim, String cidade, Evento evento) {
         this.numero = numero;
         this.ano = ano;
         this.data_inicio = data_inicio;
@@ -70,27 +82,27 @@ public class Edicao {
         this.numero = numero;
     }
 
-    public int getAno() {
+    public String getAno() {
         return ano;
     }
 
-    public void setAno(int ano) {
+    public void setAno(String ano) {
         this.ano = ano;
     }
 
-    public Date getData_inicio() {
+    public LocalDate getData_inicio() {
         return data_inicio;
     }
 
-    public void setData_inicio(Date data_inicio) {
+    public void setData_inicio(LocalDate data_inicio) {
         this.data_inicio = data_inicio;
     }
 
-    public Date getData_fim() {
+    public LocalDate getData_fim() {
         return data_fim;
     }
 
-    public void setData_fim(Date data_fim) {
+    public void setData_fim(LocalDate data_fim) {
         this.data_fim = data_fim;
     }
 
@@ -123,5 +135,9 @@ public class Edicao {
                 ", evento=" + evento +
                 '}';
     }
-}
 
+    public boolean isDataNaEdicao(LocalDate data) {
+        return !data.isBefore(data_inicio) && !data.isAfter(data_fim);
+    }
+    
+}

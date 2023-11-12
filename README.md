@@ -1,4 +1,9 @@
-Certamente! Aqui está uma versão do README com seções importantes incluídas em spoilers:
+
+<strong>Funcionalidades do Sistema</strong>
+
+O sistema permite que o Administrador cadastre eventos e edições anuais, autorizando usuários como Organizadores. Os Organizadores podem fornecer informações sobre a edição, incluindo chamada de trabalhos, prazos, informações de inscrições e lista de membros da organização.
+Os Organizadores também podem cadastrar atividades e espaços para compor a programação do evento. Os usuários podem visualizar essas informações de forma anônima no site do evento.
+Os usuários registrados podem favoritar atividades, recebendo notificações diárias sobre as atividades marcadas. O sistema oferece páginas específicas para visualização da programação, chamada de trabalhos, inscrições e organização.
 
 <details>
 <summary><strong>Endpoints da API</strong></summary>
@@ -41,19 +46,8 @@ Certamente! Aqui está uma versão do README com seções importantes incluídas
 - **DELETE /usuarios/{id}:** Excluir um usuário.
 
 </details>
-
 <details>
-<summary><strong>Funcionalidades do Sistema</strong></summary>
-
-O sistema permite que o Administrador cadastre eventos e edições anuais, autorizando usuários como Organizadores. Os Organizadores podem fornecer informações sobre a edição, incluindo chamada de trabalhos, prazos, informações de inscrições e lista de membros da organização.
-
-Os Organizadores também podem cadastrar atividades e espaços para compor a programação do evento. Os usuários podem visualizar essas informações de forma anônima no site do evento.
-
-Os usuários registrados podem favoritar atividades, recebendo notificações diárias sobre as atividades marcadas. O sistema oferece páginas específicas para visualização da programação, chamada de trabalhos, inscrições e organização.
-
-</details>
-
-<details>
+   
 <summary><strong>Como Usar a API</strong></summary>
 
 1. **Obter Todas as Atividades:**

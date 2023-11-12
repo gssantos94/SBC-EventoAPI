@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.devweb.sbceventoapi.dto.EspacoDTO;
 import com.devweb.sbceventoapi.model.Espaco;
 import com.devweb.sbceventoapi.repository.EspacoRepository;
 
@@ -33,7 +34,7 @@ public class EspacoController {
     }
 
     // Endpoint para buscar um espaço pelo ID
-    @GetMapping("/{id:\\d+}")
+    @GetMapping("/{id}")
     public ResponseEntity<Espaco> buscarPorId(@PathVariable Long id) {
         return espacoRepository.findById(id)
                 .map(record -> ResponseEntity.ok().body(record))
@@ -42,21 +43,24 @@ public class EspacoController {
 
     // Endpoint para criar um novo espaço
     @PostMapping
-    public ResponseEntity<Espaco> createEspaco(@RequestBody Espaco espaco) {
+    public ResponseEntity<Espaco> createEspaco(@RequestBody EspacoDTO criarEspacoDTO) {
+        Espaco espaco = new Espaco(criarEspacoDTO.getNome(), criarEspacoDTO.getLocalizacao(),
+                criarEspacoDTO.getCapacidade(), criarEspacoDTO.getRecursos());
         Espaco savedEspaco = espacoRepository.save(espaco);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedEspaco);
     }
 
     // Endpoint para atualizar um espaço existente
     @PutMapping("/{id}")
-    public ResponseEntity<Espaco> updateEspaco(@PathVariable Long id, @RequestBody Espaco espaco) {
+    public ResponseEntity<Espaco> updateEspaco(@PathVariable Long id,
+            @RequestBody EspacoDTO atualizarEspacoDTO) {
         Optional<Espaco> existingEspaco = espacoRepository.findById(id);
         if (existingEspaco.isPresent()) {
             Espaco updatedEspaco = existingEspaco.get();
-            updatedEspaco.setNome(espaco.getNome());
-            updatedEspaco.setLocalizacao(espaco.getLocalizacao());
-            updatedEspaco.setCapacidade(espaco.getCapacidade());
-            updatedEspaco.setRecursos(espaco.getRecursos());
+            updatedEspaco.setNome(atualizarEspacoDTO.getNome());
+            updatedEspaco.setLocalizacao(atualizarEspacoDTO.getLocalizacao());
+            updatedEspaco.setCapacidade(atualizarEspacoDTO.getCapacidade());
+            updatedEspaco.setRecursos(atualizarEspacoDTO.getRecursos());
             espacoRepository.save(updatedEspaco);
             return ResponseEntity.ok(updatedEspaco);
         } else {

@@ -1,9 +1,15 @@
 package com.devweb.sbceventoapi.model;
 
+import java.util.List;
+
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -13,7 +19,7 @@ import jakarta.validation.constraints.NotNull;
 public class Espaco {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @NotBlank
@@ -25,15 +31,17 @@ public class Espaco {
     @NotNull
     private int capacidade;
 
-    @NotBlank
-    private String recursos;
+    @ElementCollection
+    @CollectionTable(name = "recursos", joinColumns = @JoinColumn(name = "espaco_id"))
+    @Column(name = "recurso")
+    private List<String> recursos;
 
     // Construtor padrão
     public Espaco() {
     }
 
     // Construtor com parâmetros
-    public Espaco(String nome, String localizacao, int capacidade, String recursos) {
+    public Espaco(String nome, String localizacao, int capacidade, List<String> recursos) {
         this.nome = nome;
         this.localizacao = localizacao;
         this.capacidade = capacidade;
@@ -73,11 +81,11 @@ public class Espaco {
         this.capacidade = capacidade;
     }
 
-    public String getRecursos() {
+    public List<String> getRecursos() {
         return recursos;
     }
 
-    public void setRecursos(String recursos) {
+    public void setRecursos(List<String> recursos) {
         this.recursos = recursos;
     }
 

@@ -32,7 +32,7 @@ public class Evento {
     }
 
     // Construtor com parâmetros
-    public Evento( String nome, String sigla, String descricao, String path) {
+    public Evento(String nome, String sigla, String descricao, String path) {
         this.nome = nome;
         this.sigla = sigla;
         this.descricao = descricao;
@@ -92,4 +92,3 @@ public class Evento {
                 '}';
     }
 }
-

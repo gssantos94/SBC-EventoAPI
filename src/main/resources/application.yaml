@@ -1,15 +1,12 @@
 spring:
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/sbceventoapi?useTimezone=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sbceventoapi?useTimezone=true&serverTimezone=UTC
     username: docker
     password: admin123
   jpa:
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: false
 
 # swagger-ui
@@ -19,4 +16,4 @@ springdoc:
     use-root-path: true
 
 server:
-  port: 8080
+  port: 80

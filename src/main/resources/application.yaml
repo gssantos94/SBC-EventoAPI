@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sbceventoapi?useTimezone=true&serverTimezone=UTC
+    username: docker
+    password: admin123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+# swagger-ui
+springdoc:
+  paths-to-match: /api/v1/**
+  swagger-ui:
+    use-root-path: true
+
+server:
+  port: 80

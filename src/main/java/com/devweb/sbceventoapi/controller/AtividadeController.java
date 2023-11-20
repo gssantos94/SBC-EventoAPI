@@ -21,7 +21,7 @@ import com.devweb.sbceventoapi.repository.AtividadeRepository;
 import com.devweb.sbceventoapi.repository.EdicaoRepository;
 
 @RestController
-@RequestMapping("/atividades")
+@RequestMapping("/api/v1/atividade")
 public class AtividadeController {
 
     @Autowired

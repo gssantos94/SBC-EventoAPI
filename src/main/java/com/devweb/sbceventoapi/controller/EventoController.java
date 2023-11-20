@@ -28,7 +28,7 @@ import com.devweb.sbceventoapi.repository.EventoRepository;
 import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("/eventos")
+@RequestMapping("/api/v1/evento")
 public class EventoController {
 
     @Autowired

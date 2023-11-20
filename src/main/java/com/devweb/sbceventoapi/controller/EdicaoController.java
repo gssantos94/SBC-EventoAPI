@@ -21,7 +21,7 @@ import com.devweb.sbceventoapi.repository.EdicaoRepository;
 import com.devweb.sbceventoapi.service.EdicaoService;
 
 @RestController
-@RequestMapping({ "/edicoes" })
+@RequestMapping({ "/api/v1/edicao" })
 public class EdicaoController {
 
     @Autowired
@@ -80,28 +80,23 @@ public class EdicaoController {
 
     // Adicione este método para definir um organizador para uma edição
     @PostMapping("/organizador")
-    public ResponseEntity<?> definirOrganizador(
-            @RequestBody Map<String, Long> payload,
-            @RequestHeader(HttpHeaders.AUTHORIZATION) String authorizationHeader) {
-        try {
-            // Verifique se o token está presente no cabeçalho e é igual a "admin"
-            if (authorizationHeader != null && "admin".equals(authorizationHeader.trim())) {
-                Long usuarioId = payload.get("usuario_id");
-                Long edicaoId = payload.get("edicao_id");
 
-                if (usuarioId != null && edicaoId != null) {
-                    // Ajuste para refletir a mudança no serviço
-                    edicaoService.definirOrganizador(edicaoId, usuarioId);
-                    return ResponseEntity.ok().build();
-                } else {
-                    return ResponseEntity.badRequest()
-                            .body("Os IDs do usuário e da edição são obrigatórios no payload.");
-                }
+    public ResponseEntity<?> definirOrganizador(
+            @RequestBody Map<String, Long> payload) {
+        try {
+            Long usuarioId = payload.get("usuario_id");
+            Long edicaoId = payload.get("edicao_id");
+
+            if (usuarioId != null && edicaoId != null) {
+                edicaoService.definirOrganizador(edicaoId, usuarioId);
+                return ResponseEntity.ok().build();
             } else {
-                return ResponseEntity.status(403).body("Acesso negado. Você não é um administrador.");
+                return ResponseEntity.badRequest()
+                        .body("Os IDs do usuário e da edição são obrigatórios no payload.");
             }
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
 }

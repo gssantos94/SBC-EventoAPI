@@ -20,7 +20,7 @@ import com.devweb.sbceventoapi.model.Espaco;
 import com.devweb.sbceventoapi.repository.EspacoRepository;
 
 @RestController
-@RequestMapping("/espacos")
+@RequestMapping("/api/v1/espaco")
 public class EspacoController {
 
     @Autowired

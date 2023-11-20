@@ -18,7 +18,7 @@ import com.devweb.sbceventoapi.model.Usuario;
 import com.devweb.sbceventoapi.repository.UsuarioRepository;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/api/v1/usuario")
 public class UsuarioController {
 
     @Autowired

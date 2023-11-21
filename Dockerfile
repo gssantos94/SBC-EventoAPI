@@ -1,6 +1,15 @@
-FROM eclipse-temurin:17-jdk-alpine
-RUN addgroup -S spring && adduser -S spring -G spring
-USER spring:spring
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+FROM ubuntu:latest as build
+RUN apt-get update \
+    apt-get install openjdk-17-jdk -y
+COPY . .
+
+RUN apt-get install maven -y \
+    mvn clean install
+
+FROM openjdk:17-jdk-slim
+
+EXPOSE 80
+
+COPY --from=build /target/*.jar app.jar
+
+ENTRYPOINT ["java", "-jar", "app.jar"]

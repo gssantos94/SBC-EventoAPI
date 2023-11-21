@@ -3,6 +3,8 @@ package com.devweb.sbceventoapi.model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,32 +21,44 @@ public class Atividade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "Id da atividade")
     private Long id;
 
     @NotBlank
+    @Schema(description = "Nome da atividade")
     private String nome;
 
     @NotBlank
+    @Schema(description = "Tipo da atividade")
     private String tipo;
 
     @NotBlank
+    @Schema(description = "Descrição da atividade")
     private String descricao;
 
     @NotNull
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Schema(description = "Data da atividade", type = "string", format = "date")
     private LocalDate data;
 
     @NotNull
+    @JsonFormat(pattern = "HH:mm:ss")
+    @Schema(description = "Hora de início da atividade", type = "string", format = "time")
     private LocalTime hora_inicio;
 
     @NotNull
+    @JsonFormat(pattern = "HH:mm:ss")
+    @Schema(description = "Hora de fim da atividade", type = "string", format = "time")
     private LocalTime hora_fim;
 
     @ManyToOne
     @JoinColumn(name = "edicao_id")
+    @Schema(description = "Edição associada à atividade")
     private Edicao edicao;
 
     @ManyToOne
     @JoinColumn(name = "espaco_id")
+    @Schema(description = "Espaço associado à atividade")
     private Espaco espaco;
 
     // Construtor padrão

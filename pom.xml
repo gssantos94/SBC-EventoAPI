@@ -54,7 +54,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.31</version> <!-- ou a versão mais recente disponível -->
+            <version>8.0.31</version>
         </dependency>
 
 
@@ -93,29 +93,7 @@
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
         </dependency>
-
-
-		<dependency>
-			<groupId>com.google.cloud.artifactregistry</groupId>
-			<artifactId>artifactregistry-maven-wagon</artifactId>
-			<version>2.2.1</version>
-		</dependency>
-
-	</dependencies>
-
-    <repositories>
-        <repository>
-            <id>artifact-registry</id>
-            <url>artifactregistry://southamerica-east1-maven.pkg.dev/genial-theory-366616/sbceventoapi</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
+    </dependencies>
     <build>
         <plugins>
             <plugin>
@@ -123,13 +101,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-        <extensions>
-            <extension>
-                <groupId>com.google.cloud.artifactregistry</groupId>
-                <artifactId>artifactregistry-maven-wagon</artifactId>
-                <version>2.2.0</version>
-            </extension>
-        </extensions>
     </build>
 
 </project>

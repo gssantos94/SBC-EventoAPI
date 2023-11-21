@@ -24,7 +24,7 @@
     <name>SBC-EventoAPI</name>
     <description>API desenvolvida para a disciplina de Desenvolvimento Web - UFF 2023.2</description>
     <properties>
-        <java.version>18</java.version>
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>

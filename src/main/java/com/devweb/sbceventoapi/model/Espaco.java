@@ -2,6 +2,7 @@ package com.devweb.sbceventoapi.model;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -20,14 +21,18 @@ public class Espaco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Schema(description = "Id do espaço")
     private Long id;
 
+    @Schema(description = "Nome do espaço")
     @NotBlank
     private String nome;
 
+    @Schema(description = "Localização do espaço")
     @NotBlank
     private String localizacao;
 
+    @Schema(description = "Capacidade do espaço")
     @NotNull
     private int capacidade;
 

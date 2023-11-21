@@ -2,6 +2,7 @@ package com.devweb.sbceventoapi.model;
 
 import java.time.LocalDate;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,25 +22,32 @@ public class Edicao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Schema(description = "Id da edição")
     @NotNull
     private int numero;
 
+    @Schema(description = "Ano da edição")
     @NotNull
     private String ano;
 
+    @Schema(description = "Data de início da edição")
     @NotNull
     private LocalDate data_inicio;
 
+    @Schema(description = "Data de término da edição")
     @NotNull
     private LocalDate data_fim;
 
+    @Schema(description = "Cidade da edição")
     @NotBlank
     private String cidade;
 
+    @Schema(description = "Evento associado à edição")
     @ManyToOne
     @JoinColumn(name = "evento_id")
     private Evento evento;
 
+    @Schema(description = "Organizador da edição")
     @OneToOne
     private Usuario organizador;
 

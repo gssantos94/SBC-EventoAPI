@@ -1,5 +1,6 @@
 package com.devweb.sbceventoapi.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,17 +14,22 @@ public class Evento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "Id do evento")
     private Long id;
 
+    @Schema(description = "Nome do evento")
     @NotBlank
     private String nome;
 
+    @Schema(description = "Sigla do evento")
     @NotBlank
     private String sigla;
 
+    @Schema(description = "Descrição do evento")
     @NotBlank
     private String descricao;
 
+    @Schema(description = "Caminho do evento")
     @NotBlank
     private String path;
 

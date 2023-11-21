@@ -1,5 +1,6 @@
 package com.devweb.sbceventoapi.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,22 +15,28 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "Id do usuário")
     private Long id;
 
+    @Schema(description = "login do usuário")
     @NotBlank
     private String login;
 
+    @Schema(description = "Email do usuário")
     @NotBlank
     @Email
     private String email;
 
+    @Schema(description = "Nome do usuário")
     @NotBlank
     private String nome;
 
+    @Schema(description = "Afiliação do usuário")
     @NotBlank
     private String afiliacao;
 
-    private boolean admin = false;
+    @Schema(description = "Perfil do usuário")
+    private boolean admin;
 
     // Construtores
 

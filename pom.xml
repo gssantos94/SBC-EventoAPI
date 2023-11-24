@@ -16,7 +16,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.1.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.devweb</groupId>
     <artifactId>sbc-eventoapi</artifactId>
@@ -24,7 +24,7 @@
     <name>SBC-EventoAPI</name>
     <description>API desenvolvida para a disciplina de Desenvolvimento Web - UFF 2023.2</description>
     <properties>
-        <java.version>17</java.version>
+        <java.version>18</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -52,11 +52,10 @@
         </dependency>
 
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.31</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.0</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.springdoc</groupId>
@@ -102,5 +101,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

@@ -1,5 +1,5 @@
 
-<strong>Funcionalidades do Sistema</strong>
+<strong>Funcionalidades do Sistema.</strong>
 
 O sistema permite que o Administrador cadastre eventos e edições anuais, autorizando usuários como Organizadores. Os Organizadores podem fornecer informações sobre a edição, incluindo chamada de trabalhos, prazos, informações de inscrições e lista de membros da organização.
 Os Organizadores também podem cadastrar atividades e espaços para compor a programação do evento. Os usuários podem visualizar essas informações de forma anônima no site do evento.
